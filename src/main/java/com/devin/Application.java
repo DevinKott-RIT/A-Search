@@ -7,7 +7,7 @@ public class Application {
     public static void main(String[] args) {
         Map map;
         try {
-            map = new Map(4, 6);
+            map = new Map(20, 10);
             map.printMap();
         } catch (MapCreationException e) {
             e.printStackTrace();

@@ -24,30 +24,42 @@ public class Map {
 
         this.baseLength = base;
         this.heightLength = height;
+        this.map = createEmptyMap();
     }
 
+    /**
+     * Creates an empty map full of EMPTY_MAP characters.
+     *
+     * @return emptyMap     a matrix of chars containing map icons
+     */
     private char[][] createEmptyMap() {
-
+        char[][] emptyMap = new char[heightLength][baseLength];
+        for (int i = 0; i < heightLength; i++) {
+            for (int j = 0; j < baseLength; j++) {
+                emptyMap[i][j] = MAP_EMPTY;
+            }
+        }
+        return emptyMap;
     }
 
+    /**
+     * Prints out the view of the map.
+     */
     public void printMap() {
-        final int top = baseLength + 2;
-        final int sides = heightLength;
-
-        for (int i = 0; i < top; i++) {
+        for (int i = 0; i < baseLength + 2; i++) {
             System.out.printf("%c", MAP_WALL);
         }
         System.out.println();
 
-        for (int i = 0; i < sides; i++) {
+        for (int i = 0; i < heightLength; i++) {
             System.out.printf("%c", MAP_WALL);
             for (int j = 0; j < baseLength; j++) {
-                System.out.printf("%c", MAP_EMPTY);
+                System.out.printf("%c", map[i][j]);
             }
             System.out.printf("%c\n", MAP_WALL);
         }
 
-        for (int i = 0; i < top; i++) {
+        for (int i = 0; i < baseLength + 2; i++) {
             System.out.printf("%c", MAP_WALL);
         }
         System.out.println();
